@@ -52,7 +52,7 @@
 "C": " Create an Amazon API Gateway HTTP API for the metadata service. Configure API Gateway to invoke the correct Lambda function for each type of request. Create a response mapping template to remove the problematic headers based on the value of the User-Agent. Associate the response data mapping with the HTTP API. ",
 "D": " Create an Amazon CloudFront distribution for the metadata service. Create an Application Load Balancer (ALB). Configure the CloudFront distribution to forward requests to the ALB. Configure the ALB to invoke the correct Lambda function for each type of request. Create a Lambda@Edge function that will remove the problematic headers in response to viewer requests based on the value of the User-Agent header."
  },
-    correct"answers": ["A"] // 배열 형태로 변경
+    "correct answers": ["A"] // 배열 형태로 변경
   },
 {
 "question": " A retail company needs to provide a series of data files to another company, which is its business partner. These files are saved in an Amazon S3 bucket under Account A, which belongs to the retail company. The business partner company wants one of its IAM users, User_DataProcessor, to access the files from its own AWS account (Account B). Which combination of steps must the companies take so that User_DataProcessor can access the S3 bucket successfully?",
@@ -64,7 +64,7 @@
 "D": " In Account B, set the permissions of User_DataProcessor to the following:",
 E: " In Account B, set the permissions of User_DataProcessor to the following:",
  },
-    correct"answers": ["C"] // 배열 형태로 변경
+    "correct answers": ["C"] // 배열 형태로 변경
   },
   {
 "question": "A company is running a traditional web application on Amazon EC2 instances. The company needs to refactor the application as microservices that run on containers. Separate versions of the application exist in two distinct environments: production and testing. Load for the application is variable, but the minimum load and the maximum load are known. A solutions architect needs to design the updated application with a serverless architecture that minimizes operational complexity. Which solution will meet these requirements MOST cost-effectively?",
@@ -75,7 +75,7 @@ E: " In Account B, set the permissions of User_DataProcessor to the following:",
 "C": " Upload the container images to Amazon Elastic Container Registry (Amazon ECR). Configure two auto scaled Amazon Elastic Kubernetes Service (Amazon EKS) clusters with the Fargate launch type to handle the expected load. Deploy tasks from the ECR images. Configure two separate Application Load Balancers to direct traffic to the EKS clusters. ",
 "D": " Upload the container images to AWS Elastic Beanstalk. In Elastic Beanstalk, create separate environments and deployments for production and testing. Configure two separate Application Load Balancers to direct traffic to the Elastic Beanstalk deployments.",
  },
-    correct"answers": ["B"] // 배열 형태로 변경
+    "correct answers": ["B"] // 배열 형태로 변경
   },
     ]
 }
