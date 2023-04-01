@@ -8,35 +8,25 @@ const numberOfQuestionsToAnswer = 75;
 let currentQuestionIndex = 0;
 let numCorrect = 0;
 
-const questions = [
-  {
-    question: "웹 프로그래밍 언어는?",
-    answers: {
-      a: "Python",
-      b: "JavaScript",
-      c: "Ruby"
-    },
-    correctAnswers: ["b", "c"] // 배열 형태로 변경
-  },
-  {
-    question: "웹 2프로그래밍 언어는?",
-    answers: {
-      a: "Pytho2n",
-      b: "JavaS2cript",
-      c: "Rub2y"
-    },
-    correctAnswers: ["b", "c"] // 배열 형태로 변경
-  },
-  {
-    question: "웹 프로3그래밍 언어는?",
-    answers: {
-      a: "Pytho3n",
-      b: "Ja3vaScript",
-      c: "R3uby"
-    },
-    correctAnswers: ["b", "c"] // 배열 형태로 변경
-  }
-];
+let questions;
+
+function loadJSON(callback) {
+  const xobj = new XMLHttpRequest();
+  xobj.overrideMimeType("application/json");
+  xobj.open('GET', 'qz.json', true);
+  xobj.onreadystatechange = function () {
+    if (xobj.readyState == 4 && xobj.status == "200") {
+      callback(xobj.responseText);
+    }
+  };
+  xobj.send(null);
+}
+
+function init() {
+  loadJSON(function (response) {
+    questions = JSON.parse(response).questions;
+    const randomQuestions = getRandomQuestions();
+
 
 function getRandomQuestions() {
   const shuffledQuestions = [...questions].sort(() => Math.random() - 0.5);
@@ -62,9 +52,9 @@ function buildQuiz() {
   }
 
   quizContainer.innerHTML = `
-    <div class="question">${currentQuestion.question}</div>
-    <div class="answers">${answers.join('')}</div>
-    <button class="check-answer">정답 확인</button>
+    <div class="card mb-3"> <div class="card-body"> <h5 class="card-title question">${currentQuestion.question}</h5><br>
+    <div class="answers">${answers.join('')}</div><br>
+    <button class="btn btn-primary check-answer mt-3">정답 확인</button> </div> </div>
   `;
 }
 
