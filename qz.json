@@ -1726,7 +1726,7 @@
 "B" : "Create a new CloudFront distribution. Set the S3 bucket as the origin.",
 "C" : "Set the S3 bucket as a second origin in the original CloudFront distribution. Configure the distribution and the S3 bucket to use an origin access identity (OAI).",
 "D" : "During the weekly maintenance, edit the default cache behavior to use the S3 origin. Revert the change when the maintenance is complete.",
-"E" : "During the weekly maintenance, create a cache behavior for the S3 origin on the new distribution. Set the path pattern to \ Set the precedence to 0. Delete the cache behavior when the maintenance is complete.",
+"E" : "During the weekly maintenance, create a cache behavior for the S3 origin on the new distribution. Set the path pattern to Set the precedence to 0. Delete the cache behavior when the maintenance is complete.",
 "F" : "During the weekly maintenance, configure Elastic Beanstalk to serve traffic from the S3 bucket."
 },
     "correctAnswers": ["A","C","D"]
