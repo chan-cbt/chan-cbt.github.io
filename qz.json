@@ -58,10 +58,10 @@
 
 "answers": {
 "A": " Turn on the cross-origin resource sharing (CORS) feature for the S3 bucket in Account A.",
-"B": " In Account A, set the S3 bucket policy to the following:",
-"C": " In Account A, set the S3 bucket policy to the following:",
-"D": " In Account B, set the permissions of User_DataProcessor to the following:",
-"E": " In Account B, set the permissions of User_DataProcessor to the following:"
+"B": " In Account A, set the S3 bucket policy to the following:<img src='https://img.examtopics.com/aws-certified-solutions-architect-professional-sap-c02/image1.png'>",
+"C": " In Account A, set the S3 bucket policy to the following:<img src='https://img.examtopics.com/aws-certified-solutions-architect-professional-sap-c02/image2.png'>",
+"D": " In Account B, set the permissions of User_DataProcessor to the following:<img src='https://img.examtopics.com/aws-certified-solutions-architect-professional-sap-c02/image1.png'>",
+"E": " In Account B, set the permissions of User_DataProcessor to the following:<img src='https://img.examtopics.com/aws-certified-solutions-architect-professional-sap-c02/image4.png'>"
  },
     "correctAnswers": ["C"]
   },
