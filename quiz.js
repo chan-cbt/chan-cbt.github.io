@@ -94,40 +94,40 @@ function checkAnswer() {
   const currentQuestion = randomQuestions[currentQuestionIndex];
 
   // 정답 및 오답 표시를 해당 보기에만 적용합니다.
-  checkboxes.forEach(checkbox => {
-    const label = checkbox.parentElement;
-    if (userAnswers.includes(checkbox.value)) {
-      if (currentQuestion.correctAnswers.includes(checkbox.value)) {
-        label.style.color = "green";
-      } else {
-        label.style.color = "red";
-      }
-    } else if (currentQuestion.correctAnswers.includes(checkbox.value)) {
+ checkboxes.forEach(checkbox => {
+  const label = checkbox.parentElement;
+  if (userAnswers.includes(checkbox.value)) {
+    if (currentQuestion.correctAnswers.includes(checkbox.value)) {
       label.style.color = "green";
+    } else {
+      label.style.color = "red";
     }
-  });
-
-  const correct = userAnswers.sort().toString() === currentQuestion.correctAnswers.sort().toString();
-
-  if (correct) {
-    numCorrect++;
+  } else if (currentQuestion.correctAnswers.includes(checkbox.value)) {
+    label.style.color = "green";
   }
-  updateScoreboard();
+});
 
-  // 정답 확인 버튼 대신 다음 버튼을 보여줍니다.
-  const checkAnswerButton = document.querySelector('.check-answer');
-  const nextButton = document.getElementById('next');
+const correct = userAnswers.sort().toString() === currentQuestion.correctAnswers.sort().toString();
+
+if (correct) {
+  numCorrect++;
+}
+updateScoreboard();
+
+// 정답 확인 버튼 대신 다음 버튼을 보여줍니다.
+const checkAnswerButton = document.querySelector('.check-answer');
+const nextButton = document.getElementById('next');
+nextButton.style.display = 'block';
+checkAnswerButton.style.display = 'none';
+
+// 마지막 문제인 경우 정답 확인 버튼을 숨기고 제출 버튼을 표시합니다.
+if (currentQuestionIndex === numberOfQuestionsToAnswer - 1) {
+  submitButton.style.display = 'block';
+  nextButton.style.display = 'none';
+} else {
   nextButton.style.display = 'block';
-  checkAnswerButton.style.display = 'none';
-
-  // 마지막 문제인 경우 정답 확인 버튼을 숨기고 제출 버튼을 표시합니다.
-  if (currentQuestionIndex === numberOfQuestionsToAnswer - 1) {
-    submitButton.style.display = 'block';
-    nextButton.style.display = 'none';
-  } else {
-    nextButton.style.display = 'block';
-    submitButton.style.display = 'none';
-  }
+  submitButton.style.display = 'none';
+}
 }
 
 function showResults() {
@@ -135,12 +135,12 @@ function showResults() {
 }
 
 function showNextQuestion() {
-  currentQuestionIndex++;
-  buildQuiz();
+currentQuestionIndex++;
+buildQuiz();
 }
 
 function updateScoreboard() {
-  scoreboard.innerHTML = `맞은 문제 수: ${numCorrect} / ${numberOfQuestionsToAnswer}`;
+scoreboard.innerHTML = 맞은 문제 수: ${numCorrect} / ${numberOfQuestionsToAnswer};
 }
 
 nextButton.addEventListener('click', showNextQuestion);
