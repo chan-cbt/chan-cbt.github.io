@@ -32,10 +32,10 @@ async function init() {
 function buildQuiz() {
   const currentQuestion = randomQuestions[currentQuestionIndex];
 
-  const questionContainer = document.getElementById('question-container');
-  questionContainer.innerHTML = `
-    <div class="question">${currentQuestion.question}</div>
-  `;
+const questionContainer = document.getElementById('question-container');
+questionContainer.innerHTML = `
+  <div class="question">${currentQuestionIndex + 1}. ${currentQuestion.question}</div>
+`;
 
   const answerContainer = document.getElementById('answer-container');
   answerContainer.innerHTML = "";
