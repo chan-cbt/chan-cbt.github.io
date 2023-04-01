@@ -130,8 +130,12 @@ function checkAnswer() {
 }
 
 function showNextQuestion() {
-  currentQuestionIndex++;
-  buildQuiz();
+  if (currentQuestionIndex < numberOfQuestionsToAnswer - 1) {
+    currentQuestionIndex++;
+    buildQuiz();
+  } else {
+    console.error("더 이상 표시할 문제가 없습니다.");
+  }
 }
 
 function updateScoreboard() {
