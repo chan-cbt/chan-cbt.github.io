@@ -32,10 +32,10 @@ async function init() {
 function buildQuiz() {
   const currentQuestion = randomQuestions[currentQuestionIndex];
 
-const questionContainer = document.getElementById('question-container');
-questionContainer.innerHTML = `
-  <div class="question">${currentQuestionIndex + 1}. ${currentQuestion.question}</div>
-`;
+  const questionContainer = document.getElementById('question-container');
+  questionContainer.innerHTML = `
+    <div class="question">${currentQuestionIndex + 1}. ${currentQuestion.question}</div>
+  `;
 
   const answerContainer = document.getElementById('answer-container');
   answerContainer.innerHTML = "";
@@ -68,10 +68,15 @@ questionContainer.innerHTML = `
   checkAnswerButton.onclick = checkAnswer;
   answerContainer.appendChild(checkAnswerButton);
 
+  // 이전 질문에서 생성된 요소를 제거합니다.
+  const questionIndex = currentQuestionIndex === 0 ? currentQuestionIndex : currentQuestionIndex - 1;
+  const prevQuestionContainer = document.getElementsByName(`question${questionIndex}`)[0].parentNode.parentNode;
+  prevQuestionContainer.parentNode.removeChild(prevQuestionContainer);
+
+  // 다음 버튼을 숨깁니다.
   nextButton.style.display = 'none';
   submitButton.style.display = 'none';
 }
-
 
 function checkAnswer() {
   const answerContainer = document.getElementById('answer-container');
@@ -109,18 +114,20 @@ function checkAnswer() {
   }
   updateScoreboard();
 
-// 정답 확인 버튼 대신 다음 버튼을 보여줍니다.
-const nextButton = document.getElementById('next');
-const checkAnswerButton = document.querySelector('.check-answer');
-nextButton.style.display = 'block';
-checkAnswerButton.style.display = 'none';
+  // 정답 확인 버튼 대신 다음 버튼을 보여줍니다.
+  const checkAnswerButton = document.querySelector('.check-answer');
+  const nextButton = document.getElementById('next');
+  nextButton.style.display = 'block';
+  checkAnswerButton.style.display = 'none';
 
-// 마지막 문제인 경우 정답 확인 버튼을 숨기고 제출 버튼을 표시합니다.
-if (currentQuestionIndex === numberOfQuestionsToAnswer - 1) {
-submitButton.style.display = 'block';
-} else {
-nextButton.style.display = 'block';
-}
+  // 마지막 문제인 경우 정답 확인 버튼을 숨기고 제출 버튼을 표시합니다.
+  if (currentQuestionIndex === numberOfQuestionsToAnswer - 1) {
+    submitButton.style.display = 'block';
+    nextButton.style.display = 'none';
+  } else {
+    nextButton.style.display = 'block';
+    submitButton.style.display = 'none';
+  }
 }
 
 function showResults() {
