@@ -76,7 +76,8 @@ function buildQuiz() {
 function checkAnswer() {
   const answerContainer = document.getElementById('answer-container');
   const checkboxes = answerContainer.querySelectorAll(`input[type=checkbox]`);
-  const checkAnswerButton = answerContainer.querySelector('.check-answer');
+  const checkAnswerButton = quizContainer.querySelector('.check-answer');
+  checkAnswerButton.style.display = 'none';
 
   let userAnswers = [];
   checkboxes.forEach(checkbox => {
