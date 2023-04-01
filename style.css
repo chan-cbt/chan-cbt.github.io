@@ -82,15 +82,3 @@ body {
   text-align: right;
   margin-bottom: 20px;
 }
-
-@media only screen and (max-width: 600px) {
-  .answers {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .answer {
-    width: 100%;
-    margin: 5px 0;
-  }
-}
