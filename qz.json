@@ -1272,7 +1272,7 @@
     "correctAnswers": ["A","B","E"]
   },
   {
-"question": "A company has an on-premises monitoring solution using a PostgreSQL database for persistence of events. The database is unable to scale due to heavy ingestion and it frequently runs out of storage.  The company wants to create a hybrid solution and has already set up a VPN connection between its network and AWS. The solution should include the following attributes: •	Managed AWS services to minimize operational complexity. •	A buffer that automatically scales to match the throughput of data and requires no ongoing administration. •	A visualization tool to create dashboards to observe events in near-real time. •	Support for semi-structured JSON data and dynamic schemas.  Which combination of components will enable the company to create a monitoring solution that will satisfy these requirements? (Choose two.)",
+"question": "A company has an on-premises monitoring solution using a PostgreSQL database for persistence of events. The database is unable to scale due to heavy ingestion and it frequently runs out of storage.  The company wants to create a hybrid solution and has already set up a VPN connection between its network and AWS. The solution should include the following attributes: Managed AWS services to minimize operational complexity. A buffer that automatically scales to match the throughput of data and requires no ongoing administration. A visualization tool to create dashboards to observe events in near-real time. Support for semi-structured JSON data and dynamic schemas.  Which combination of components will enable the company to create a monitoring solution that will satisfy these requirements? (Choose two.)",
 
   "answers": {
 "A" : "Use Amazon Kinesis Data Firehose to buffer events. Create an AWS Lambda function to process and transform events.",
@@ -1517,7 +1517,7 @@
     "correctAnswers": ["C"]
   },
   {
-"question": "A company is creating a sequel for a popular online game. A large number of users from all over the world will play the game within the first week after launch. Currently, the game consists of the following components deployed in a single AWS Region:  •	Amazon S3 bucket that stores game assets •	Amazon DynamoDB table that stores player scores  A solutions architect needs to design a multi-Region solution that will reduce latency, improve reliability, and require the least effort to implement.  What should the solutions architect do to meet these requirements?",
+"question": "A company is creating a sequel for a popular online game. A large number of users from all over the world will play the game within the first week after launch. Currently, the game consists of the following components deployed in a single AWS Region:  Amazon S3 bucket that stores game assets Amazon DynamoDB table that stores player scores  A solutions architect needs to design a multi-Region solution that will reduce latency, improve reliability, and require the least effort to implement.  What should the solutions architect do to meet these requirements?",
 
   "answers": {
 "A" : "Create an Amazon CloudFront distribution to serve assets from the S3 bucket. Configure S3 Cross-Region Replication. Create a new DynamoDB table in a new Region. Use the new table as a replica target for DynamoDB global tables.",
@@ -1901,7 +1901,7 @@
     "correctAnswers": ["C","D","F"]
   },
   {
-"question": "A company is running a critical stateful web application on two Linux Amazon EC2 instances behind an Application Load Balancer (ALB) with an Amazon RDS for MySQL database. The company hosts the DNS records for the application in Amazon Route 53. A solutions architect must recommend a solution to improve the resiliency of the application.  The solution must meet the following objectives:  •	Application tier: RPO of 2 minutes. RTO of 30 minutes •	Database tier: RPO of 5 minutes. RTO of 30 minutes  The company does not want to make significant changes to the existing application architecture. The company must ensure optimal latency after a failover.  Which solution will meet these requirements?",
+"question": "A company is running a critical stateful web application on two Linux Amazon EC2 instances behind an Application Load Balancer (ALB) with an Amazon RDS for MySQL database. The company hosts the DNS records for the application in Amazon Route 53. A solutions architect must recommend a solution to improve the resiliency of the application.  The solution must meet the following objectives:  Application tier: RPO of 2 minutes. RTO of 30 minutes Database tier: RPO of 5 minutes. RTO of 30 minutes  The company does not want to make significant changes to the existing application architecture. The company must ensure optimal latency after a failover.  Which solution will meet these requirements?",
 
   "answers": {
 "A" : "Configure the EC2 instances to use AWS Elastic Disaster Recovery. Create a cross-Region read replica for the RDS DB instance. Create an ALB in a second AWS Region. Create an AWS Global Accelerator endpoint, and associate the endpoint with the ALBs. Update DNS records to point to the Global Accelerator endpoint.",
