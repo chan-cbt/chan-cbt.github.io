@@ -723,7 +723,7 @@
     "correctAnswers": ["B"]
   },
   {
-"question": "A startup company hosts a fleet of Amazon EC2 instances in private subnets using the latest Amazon Linux 2 AMI. The company’s engineers rely heavily on SSH access to the instances for troubleshooting.  The company’s existing architecture includes the following:  •	A VPC with private and public subnets, and a NAT gateway. •	Site-to-Site VPN for connectivity with the on-premises environment. •	EC2 security groups with direct SSH access from the on-premises environment.  The company needs to increase security controls around SSH access and provide auditing of commands run by the engineers.  Which strategy should a solutions architect use?",
+"question": "A startup company hosts a fleet of Amazon EC2 instances in private subnets using the latest Amazon Linux 2 AMI. The company’s engineers rely heavily on SSH access to the instances for troubleshooting.  The company’s existing architecture includes the following:  A VPC with private and public subnets, and a NAT gateway. Site-to-Site VPN for connectivity with the on-premises environment. EC2 security groups with direct SSH access from the on-premises environment.  The company needs to increase security controls around SSH access and provide auditing of commands run by the engineers.  Which strategy should a solutions architect use?",
 
   "answers": {
 "A" : "Install and configure EC2 Instance Connect on the fleet of EC2 instances. Remove all security group rules attached to EC2 instances that allow inbound TCP on port 22. Advise the engineers to remotely access the instances by using the EC2 Instance Connect CLI.",
@@ -1999,5 +1999,5 @@
 "D" : "Provision a new Amazon Connect instance with all existing users and contact flows in a second Region. Create an Amazon Route 53 health check for the URL of the Amazon Connect instance. Create an Amazon CloudWatch alarm for failed health checks. Create an AWS Lambda function to deploy an AWS CloudFormation template that provisions claimed phone numbers. Configure the alarm to invoke the Lambda function."
 },
     "correctAnswers": ["D"]
-  },
+  }
 ]
