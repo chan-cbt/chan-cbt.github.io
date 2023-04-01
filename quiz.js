@@ -62,7 +62,7 @@ function buildQuiz() {
     answerContainer.appendChild(answerCard);
   }
 
-  const checkAnswerButton = document.createElement("button");
+  let checkAnswerButton = document.createElement("button");
   checkAnswerButton.className = "check-answer btn btn-info mt-3";
   checkAnswerButton.innerHTML = "정답 확인";
   checkAnswerButton.onclick = checkAnswer;
