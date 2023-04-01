@@ -959,7 +959,7 @@
     "correctAnswers": ["C"]
   },
   {
-"question": "A company plans to refactor a monolithic application into a modern application design deployed on AWS. The CI/CD pipeline needs to be upgraded to support the modern design for the application with the following requirements:  •	It should allow changes to be released several times every hour. •	It should be able to roll back the changes as quickly as possible.  Which design will meet these requirements?",
+"question": "A company plans to refactor a monolithic application into a modern application design deployed on AWS. The CI/CD pipeline needs to be upgraded to support the modern design for the application with the following requirements:  It should allow changes to be released several times every hour. It should be able to roll back the changes as quickly as possible.  Which design will meet these requirements?",
 
   "answers": {
 "A" : "Deploy a CI/CD pipeline that incorporates AMIs to contain the application and their configurations. Deploy the application by replacing Amazon EC2 instances.",
