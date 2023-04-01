@@ -34,7 +34,7 @@ function buildQuiz() {
 
   const questionContainer = document.getElementById('question-container');
   questionContainer.innerHTML = `
-    <div class="question">${currentQuestion.question}</div>
+    <div class="question">${currentQuestionIndex + 1}. ${currentQuestion.question}</div>
   `;
 
   const answerContainer = document.getElementById('answer-container');
@@ -118,6 +118,20 @@ function updateScoreboard() {
 
 function showResults() {
   resultsContainer.innerHTML = `총 점수: ${numCorrect} / ${numberOfQuestionsToAnswer}`;
+
+  const retryButton = document.createElement('button');
+  retryButton.textContent = '다시하기';
+  retryButton.classList.add('btn', 'btn-primary', 'mt-3');
+  retryButton.addEventListener('click', () => {
+    currentQuestionIndex = 0;
+    numCorrect = 0;
+    randomQuestions = getRandomQuestions();
+    buildQuiz();
+    updateScoreboard();
+    resultsContainer.innerHTML = '';
+  });
+
+  resultsContainer.appendChild(retryButton);
 }
 
 function limitCheckboxSelection(checkboxes, maxSelection) {
