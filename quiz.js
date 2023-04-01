@@ -115,6 +115,9 @@ function checkAnswer() {
   } else if (currentQuestion.correctAnswers.includes(checkbox.value)) {
     label.style.color = "green";
   }
+
+      // 체크박스를 비활성화합니다.
+    checkbox.disabled = true;
 });
 
 const correct = userAnswers.sort().toString() === currentQuestion.correctAnswers.sort().toString();
