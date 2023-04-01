@@ -62,7 +62,7 @@
 "B": " In Account A, set the S3 bucket policy to the following:",
 "C": " In Account A, set the S3 bucket policy to the following:",
 "D": " In Account B, set the permissions of User_DataProcessor to the following:",
-"E": " In Account B, set the permissions of User_DataProcessor to the following:",
+"E": " In Account B, set the permissions of User_DataProcessor to the following:"
  },
     "correctAnswers": ["C"]
   },
@@ -73,7 +73,7 @@
 "A": " Upload the container images to AWS Lambda as functions. Configure a concurrency limit for the associated Lambda functions to handle the expected peak load. Configure two separate Lambda integrations within Amazon API Gateway: one for production and one for testing.",
 "B": " Upload the container images to Amazon Elastic Container Registry (Amazon ECR). Configure two auto scaled Amazon Elastic Container Service (Amazon ECS) clusters with the Fargate launch type to handle the expected load. Deploy tasks from the ECR images. Configure two separate Application Load Balancers to direct traffic to the ECS clusters. ",
 "C": " Upload the container images to Amazon Elastic Container Registry (Amazon ECR). Configure two auto scaled Amazon Elastic Kubernetes Service (Amazon EKS) clusters with the Fargate launch type to handle the expected load. Deploy tasks from the ECR images. Configure two separate Application Load Balancers to direct traffic to the EKS clusters. ",
-"D": " Upload the container images to AWS Elastic Beanstalk. In Elastic Beanstalk, create separate environments and deployments for production and testing. Configure two separate Application Load Balancers to direct traffic to the Elastic Beanstalk deployments.",
+"D": " Upload the container images to AWS Elastic Beanstalk. In Elastic Beanstalk, create separate environments and deployments for production and testing. Configure two separate Application Load Balancers to direct traffic to the Elastic Beanstalk deployments."
  },
     "correctAnswers": ["B"]
   }
