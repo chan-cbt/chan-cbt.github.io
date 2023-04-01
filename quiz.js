@@ -71,8 +71,11 @@ function buildQuiz() {
   // 이전 질문에서 생성된 요소를 제거합니다.
 if (currentQuestionIndex !== 0) {
   const questionIndex = currentQuestionIndex === 0 ? currentQuestionIndex : currentQuestionIndex - 1;
-  const prevQuestionContainer = document.querySelector(`input[name=question${questionIndex}]`).parentNode.parentNode.parentNode;
-  prevQuestionContainer.parentNode.removeChild(prevQuestionContainer);
+  const prevInput = document.querySelector(`input[name=question${questionIndex}]`);
+  if (prevInput) {
+    const prevQuestionContainer = prevInput.parentNode.parentNode.parentNode;
+    prevQuestionContainer.parentNode.removeChild(prevQuestionContainer);
+  }
 }
 
   // 다음 버튼을 숨기거나 보여줍니다.
