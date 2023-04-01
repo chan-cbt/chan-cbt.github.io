@@ -62,7 +62,7 @@ function buildQuiz() {
     answerContainer.appendChild(answerCard);
   }
 
-  let checkAnswerButton = document.createElement("button");
+  const checkAnswerButton = document.createElement("button");
   checkAnswerButton.className = "check-answer btn btn-info mt-3";
   checkAnswerButton.innerHTML = "정답 확인";
   checkAnswerButton.onclick = checkAnswer;
@@ -131,7 +131,7 @@ if (currentQuestionIndex === numberOfQuestionsToAnswer - 1) {
 }
 
 function showResults() {
-  resultsContainer.innerHTML = `총 점수: ${numCorrect} / ${numberOfQuestionsToAnswer}`;
+  resultsContainer.innerHTML = '총 점수: ${numCorrect} / ${numberOfQuestionsToAnswer}';
 }
 
 function showNextQuestion() {
@@ -140,7 +140,7 @@ buildQuiz();
 }
 
 function updateScoreboard() {
-scoreboard.innerHTML = 맞은 문제 수: ${numCorrect} / ${numberOfQuestionsToAnswer};
+scoreboard.innerHTML = '맞은 문제 수: ${numCorrect} / ${numberOfQuestionsToAnswer}';
 }
 
 nextButton.addEventListener('click', showNextQuestion);
