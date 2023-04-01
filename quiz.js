@@ -9,6 +9,7 @@ let currentQuestionIndex = 0;
 let numCorrect = 0;
 
 let questions = [];
+let randomQuestions = [];
 
 async function fetchQuizData() {
   const response = await fetch('qz.json');
@@ -23,7 +24,7 @@ function getRandomQuestions() {
 
 async function init() {
   questions = await fetchQuizData();
-  const randomQuestions = getRandomQuestions();
+  randomQuestions = getRandomQuestions();
   buildQuiz();
   updateScoreboard();
 }
@@ -124,18 +125,6 @@ function showNextQuestion() {
 function updateScoreboard() {
   scoreboard.innerHTML = `맞은 문제 수: ${numCorrect} / ${numberOfQuestionsToAnswer}`;
 }
-
-nextButton.addEventListener('click', showNextQuestion);
-submitButton.addEventListener('click', showResults);
-
-quizContainer.addEventListener('click', (event) => {
-  if (event.target.matches('.check-answer')) {
-    checkAnswer();
-  }
-});
-
-buildQuiz();
-updateScoreboard();
 
 nextButton.addEventListener('click', showNextQuestion);
 submitButton.addEventListener('click', showResults);
