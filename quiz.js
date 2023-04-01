@@ -30,6 +30,8 @@ async function init() {
 }
 
 function buildQuiz() {
+console.log("Random questions: ", randomQuestions);
+console.log("Current question index: ", currentQuestionIndex);
   const currentQuestion = randomQuestions[currentQuestionIndex];
 
   const questionContainer = document.getElementById('question-container');
@@ -67,6 +69,9 @@ function buildQuiz() {
   checkAnswerButton.innerHTML = "정답 확인";
   checkAnswerButton.onclick = checkAnswer;
   answerContainer.appendChild(checkAnswerButton);
+
+    const checkboxes = answerContainer.querySelectorAll(`input[type=checkbox]`);
+  limitCheckboxSelection(checkboxes, currentQuestion.correctAnswers.length);
 }
 
 function checkAnswer() {
