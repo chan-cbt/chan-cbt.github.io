@@ -115,7 +115,7 @@ if (correct) {
 updateScoreboard();
 
 // 정답 확인 버튼 대신 다음 버튼을 보여줍니다.
-const checkAnswerButton = document.querySelector('.check-answer');
+let checkAnswerButton = document.querySelector('.check-answer');
 const nextButton = document.getElementById('next');
 nextButton.style.display = 'block';
 checkAnswerButton.style.display = 'none';
