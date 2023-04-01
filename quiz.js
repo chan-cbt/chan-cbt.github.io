@@ -67,13 +67,16 @@ function buildQuiz() {
   checkAnswerButton.innerHTML = "정답 확인";
   checkAnswerButton.onclick = checkAnswer;
   answerContainer.appendChild(checkAnswerButton);
+
+  nextButton.style.display = 'none';
+  submitButton.style.display = 'none';
 }
 
 
 function checkAnswer() {
-  const answerContainer = quizContainer.querySelector('.answers');
+  const answerContainer = document.getElementById('answer-container');
   const checkboxes = answerContainer.querySelectorAll(`input[type=checkbox]`);
-  const checkAnswerButton = quizContainer.querySelector('.check-answer');
+  const checkAnswerButton = answerContainer.querySelector('.check-answer');
 
   let userAnswers = [];
   checkboxes.forEach(checkbox => {
@@ -107,30 +110,19 @@ function checkAnswer() {
 
   // 마지막 문제인 경우 정답 확인 버튼을 숨기고 제출 버튼을 표시합니다.
   if (currentQuestionIndex === numberOfQuestionsToAnswer - 1) {
-    checkAnswerButton.style.display = 'none';
     submitButton.style.display = 'block';
   } else {
-    // 정답 확인 버튼을 숨기고 다음 버튼을 표시합니다.
-    checkAnswerButton.style.display = 'none';
     nextButton.style.display = 'block';
   }
 }
+
 function showResults() {
   resultsContainer.innerHTML = `총 점수: ${numCorrect} / ${numberOfQuestionsToAnswer}`;
 }
 
 function showNextQuestion() {
   currentQuestionIndex++;
-  if (currentQuestionIndex >= numberOfQuestionsToAnswer - 1) {
-    nextButton.style.display = 'none';
-    submitButton.style.display = 'block';
-  }
   buildQuiz();
-
-  // 다음 문제에는 다시 정답 확인 버튼이 표시되고 다음 버튼이 숨겨집니다.
-  const checkAnswerButton = quizContainer.querySelector('.check-answer');
-  checkAnswerButton.style.display = 'block';
-  nextButton.style.display = 'none';
 }
 
 function updateScoreboard() {
@@ -139,11 +131,5 @@ function updateScoreboard() {
 
 nextButton.addEventListener('click', showNextQuestion);
 submitButton.addEventListener('click', showResults);
-
-quizContainer.addEventListener('click', (event) => {
-  if (event.target.matches('.check-answer')) {
-    checkAnswer();
-  }
-});
 
 init();
