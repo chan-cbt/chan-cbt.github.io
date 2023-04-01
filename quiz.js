@@ -34,7 +34,7 @@ function buildQuiz() {
 
   const questionContainer = document.getElementById('question-container');
   questionContainer.innerHTML = `
-    <div class="question">${currentQuestionIndex + 1}. ${currentQuestion.question}</div>
+    <div class="question">${currentQuestion.question}</div>
   `;
 
   const answerContainer = document.getElementById('answer-container');
@@ -55,7 +55,7 @@ function buildQuiz() {
     answerInput.value = letter;
 
     answerLabel.appendChild(answerInput);
-    answerLabel.appendChild(document.createTextNode( ` ${letter} : ${currentQuestion.answers[letter]}<br>`));
+    answerLabel.innerHTML += ` ${letter} : ${currentQuestion.answers[letter]}`;
 
     answerCardBody.appendChild(answerLabel);
     answerCard.appendChild(answerCardBody);
@@ -73,9 +73,14 @@ function buildQuiz() {
   const prevQuestionContainer = document.getElementsByName(`question${questionIndex}`)[0].parentNode.parentNode;
   prevQuestionContainer.parentNode.removeChild(prevQuestionContainer);
 
-  // 다음 버튼을 숨깁니다.
-  nextButton.style.display = 'none';
-  submitButton.style.display = 'none';
+  // 다음 버튼을 숨기거나 보여줍니다.
+  if (currentQuestionIndex === numberOfQuestionsToAnswer - 1) {
+    nextButton.style.display = 'none';
+    submitButton.style.display = 'block';
+  } else {
+    nextButton.style.display = 'block';
+    submitButton.style.display = 'none';
+  }
 }
 
 function checkAnswer() {
