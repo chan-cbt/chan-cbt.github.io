@@ -30,8 +30,16 @@ async function init() {
 }
 
 function buildQuiz() {
-console.log("Random questions: ", randomQuestions);
-console.log("Current question index: ", currentQuestionIndex);
+  if (!randomQuestions || randomQuestions.length === 0) {
+    console.error("randomQuestions 배열이 비어 있습니다.");
+    return;
+  }
+  
+  if (currentQuestionIndex < 0 || currentQuestionIndex >= randomQuestions.length) {
+    console.error("currentQuestionIndex가 올바르지 않습니다.");
+    return;
+  }
+
   const currentQuestion = randomQuestions[currentQuestionIndex];
 
   const questionContainer = document.getElementById('question-container');
