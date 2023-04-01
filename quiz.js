@@ -81,18 +81,6 @@ function buildQuiz() {
     const checkboxes = answerContainer.querySelectorAll(`input[type=checkbox]`);
   limitCheckboxSelection(checkboxes, currentQuestion.correctAnswers.length);
 
-  // 첫 번째 문제에서 정답 확인 버튼과 다음 버튼을 동시에 보여줍니다.
-  if (currentQuestionIndex === 0) {
-    checkAnswerButton.style.display = 'inline-block';
-    nextButton.style.display = 'inline-block';
-  } else if (currentQuestionIndex < numberOfQuestionsToAnswer - 1) {
-    nextButton.style.display = 'block';
-    checkAnswerButton.style.display = 'none';
-  } else {
-    submitButton.style.display = 'block';
-    nextButton.style.display = 'none';
-  }
-
 }
 
 function checkAnswer() {
