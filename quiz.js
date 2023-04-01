@@ -105,6 +105,15 @@ function checkAnswer() {
     numCorrect++;
   }
   updateScoreboard();
+
+  // 정답 확인 버튼 대신 다음 버튼을 보여줍니다.
+  if (currentQuestionIndex < numberOfQuestionsToAnswer - 1) {
+    nextButton.style.display = 'block';
+    checkAnswerButton.style.display = 'none';
+  } else {
+    submitButton.style.display = 'block';
+    nextButton.style.display = 'none';
+  }
 }
 
 function showNextQuestion() {
