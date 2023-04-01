@@ -32,30 +32,41 @@ async function init() {
 function buildQuiz() {
   const currentQuestion = randomQuestions[currentQuestionIndex];
 
-  const answers = [];
-
-  for (const letter in currentQuestion.answers) {
-    answers.push(
-      `<label>
-        <input type="checkbox" name="question${currentQuestionIndex}" value="${letter}">
-        ${letter} :
-        ${currentQuestion.answers[letter]}
-        <br>
-      </label>`
-    );
-  }
-
-  // 문제와 보기를 각각의 카드에 삽입합니다.
   const questionContainer = document.getElementById('question-container');
   questionContainer.innerHTML = `
     <div class="question">${currentQuestion.question}</div>
   `;
 
   const answerContainer = document.getElementById('answer-container');
-  answerContainer.innerHTML = `
-    <div class="answers">${answers.join('')}</div>
-    <button class="check-answer btn btn-info mt-3">정답 확인</button>
-  `;
+  answerContainer.innerHTML = "";
+
+  for (const letter in currentQuestion.answers) {
+    const answerCard = document.createElement("div");
+    answerCard.className = "card mb-2";
+
+    const answerCardBody = document.createElement("div");
+    answerCardBody.className = "card-body";
+
+    const answerLabel = document.createElement("label");
+
+    const answerInput = document.createElement("input");
+    answerInput.type = "checkbox";
+    answerInput.name = `question${currentQuestionIndex}`;
+    answerInput.value = letter;
+
+    answerLabel.appendChild(answerInput);
+    answerLabel.innerHTML += ` ${letter} : ${currentQuestion.answers[letter]}<br>`;
+
+    answerCardBody.appendChild(answerLabel);
+    answerCard.appendChild(answerCardBody);
+    answerContainer.appendChild(answerCard);
+  }
+
+  const checkAnswerButton = document.createElement("button");
+  checkAnswerButton.className = "check-answer btn btn-info mt-3";
+  checkAnswerButton.innerHTML = "정답 확인";
+  checkAnswerButton.onclick = checkAnswer;
+  answerContainer.appendChild(checkAnswerButton);
 }
 
 
