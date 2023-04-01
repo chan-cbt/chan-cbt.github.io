@@ -5,20 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz</title>
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
 </head>
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 offset-lg-2">
-        <div id="scoreboard" class="text-right"></div>
-        <div id="quiz"></div>
-        <div id="results"></div>
-        <button id="next" class="btn btn-primary" style="display:none">다음</button>
-        <button id="submit" class="btn btn-success" style="display:none">제출</button>
+   <div class="container">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+          <div class="card my-3">
+            <div class="card-header">
+              <h3 class="text-center font-weight-bold">ChanCBT _  SAP-C02</h3>
+            </div>
+            <div class="card-body">
+              <div id="quiz">
+			  </div>
+              <button id="check-answer" class="btn btn-success btn-block mb-3" style="display:none">정답 확인</button>
+              <div class="d-flex justify-content-between">
+                <button  id="next" class="btn btn-primary mb-3" style="display:none" > 다음 </button>
+                <button id="submit" class="btn btn-success mb-3" style="display:none" > 제출</button>
+              </div>
+            </div>
+          </div>
+          <div id="results" class="text-center"></div>
+          <div id="scoreboard" class="text-right"></div>
+        </div>
       </div>
     </div>
-  </div>
  <script src="quiz.js"></script>
 </body>
 </html>
