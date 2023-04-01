@@ -109,6 +109,12 @@ function checkAnswer() {
   }
   updateScoreboard();
 
+  // 정답 확인 버튼 대신 다음 버튼을 보여줍니다.
+  const nextButton = document.getElementById('next');
+  const checkAnswerButton = document.querySelector('.check-answer');
+  nextButton.style.display = 'block';
+  checkAnswerButton.style.display = 'none';
+
   // 마지막 문제인 경우 정답 확인 버튼을 숨기고 제출 버튼을 표시합니다.
   if (currentQuestionIndex === numberOfQuestionsToAnswer - 1) {
     submitButton.style.display = 'block';
