@@ -144,6 +144,9 @@ function updateScoreboard() {
 }
 
 function showResults() {
+  const questionContainer = document.getElementById('question-container');
+  const answerContainer = document.getElementById('answer-container');
+
   // 문제와 보기를 숨깁니다.
   questionContainer.style.display = 'none';
   answerContainer.style.display = 'none';
