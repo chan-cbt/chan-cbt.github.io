@@ -76,6 +76,6 @@
 "D": " Upload the container images to AWS Elastic Beanstalk. In Elastic Beanstalk, create separate environments and deployments for production and testing. Configure two separate Application Load Balancers to direct traffic to the Elastic Beanstalk deployments.",
  },
     "correctAnswers": ["B"]
-  },
+  }
     ]
 }
