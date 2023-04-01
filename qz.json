@@ -62,7 +62,7 @@
 "B": " In Account A, set the S3 bucket policy to the following:",
 "C": " In Account A, set the S3 bucket policy to the following:",
 "D": " In Account B, set the permissions of User_DataProcessor to the following:",
-E: " In Account B, set the permissions of User_DataProcessor to the following:",
+"E": " In Account B, set the permissions of User_DataProcessor to the following:",
  },
     "correctAnswers": ["C"] // 배열 형태로 변경
   },
