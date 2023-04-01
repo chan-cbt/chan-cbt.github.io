@@ -8,32 +8,25 @@ const numberOfQuestionsToAnswer = 75;
 let currentQuestionIndex = 0;
 let numCorrect = 0;
 
-let questions;
+let questions = [];
 
-function loadJSON(callback) {
-  const xobj = new XMLHttpRequest();
-  xobj.overrideMimeType("application/json");
-  xobj.open('GET', 'qz.json', true);
-  xobj.onreadystatechange = function () {
-    if (xobj.readyState == 4 && xobj.status == "200") {
-      callback(xobj.responseText);
-    }
-  };
-  xobj.send(null);
+async function fetchQuizData() {
+  const response = await fetch('qz.json');
+  const data = await response.json();
+  return data;
 }
-
-function init() {
-  loadJSON(function (response) {
-    questions = JSON.parse(response).questions;
-    const randomQuestions = getRandomQuestions();
-
 
 function getRandomQuestions() {
   const shuffledQuestions = [...questions].sort(() => Math.random() - 0.5);
   return shuffledQuestions.slice(0, numberOfQuestionsToAnswer);
 }
 
-const randomQuestions = getRandomQuestions();
+async function init() {
+  questions = await fetchQuizData();
+  const randomQuestions = getRandomQuestions();
+  buildQuiz();
+  updateScoreboard();
+}
 
 function buildQuiz() {
   const currentQuestion = randomQuestions[currentQuestionIndex];
@@ -51,12 +44,19 @@ function buildQuiz() {
     );
   }
 
-  quizContainer.innerHTML = `
-    <div class="card mb-3"> <div class="card-body"> <h5 class="card-title question">${currentQuestion.question}</h5><br>
-    <div class="answers">${answers.join('')}</div><br>
-    <button class="btn btn-primary check-answer mt-3">정답 확인</button> </div> </div>
+  // 문제와 보기를 각각의 카드에 삽입합니다.
+  const questionContainer = document.getElementById('question-container');
+  questionContainer.innerHTML = `
+    <div class="question">${currentQuestion.question}</div>
+  `;
+
+  const answerContainer = document.getElementById('answer-container');
+  answerContainer.innerHTML = `
+    <div class="answers">${answers.join('')}</div>
+    <button class="check-answer btn btn-info mt-3">정답 확인</button>
   `;
 }
+
 
 function checkAnswer() {
   const answerContainer = quizContainer.querySelector('.answers');
@@ -71,11 +71,25 @@ function checkAnswer() {
   });
 
   const currentQuestion = randomQuestions[currentQuestionIndex];
-  if (userAnswers.sort().toString() === currentQuestion.correctAnswers.sort().toString()) {
-    answerContainer.style.color = "green";
+
+  // 정답 및 오답 표시를 해당 보기에만 적용합니다.
+  checkboxes.forEach(checkbox => {
+    const label = checkbox.parentElement;
+    if (userAnswers.includes(checkbox.value)) {
+      if (currentQuestion.correctAnswers.includes(checkbox.value)) {
+        label.style.color = "green";
+      } else {
+        label.style.color = "red";
+      }
+    } else if (currentQuestion.correctAnswers.includes(checkbox.value)) {
+      label.style.color = "green";
+    }
+  });
+
+  const correct = userAnswers.sort().toString() === currentQuestion.correctAnswers.sort().toString();
+
+  if (correct) {
     numCorrect++;
-  } else {
-    answerContainer.style.color = "red";
   }
   updateScoreboard();
 
@@ -89,7 +103,6 @@ function checkAnswer() {
     nextButton.style.display = 'block';
   }
 }
-
 function showResults() {
   resultsContainer.innerHTML = `총 점수: ${numCorrect} / ${numberOfQuestionsToAnswer}`;
 }
@@ -123,3 +136,14 @@ quizContainer.addEventListener('click', (event) => {
 
 buildQuiz();
 updateScoreboard();
+
+nextButton.addEventListener('click', showNextQuestion);
+submitButton.addEventListener('click', showResults);
+
+quizContainer.addEventListener('click', (event) => {
+  if (event.target.matches('.check-answer')) {
+    checkAnswer();
+  }
+});
+
+init();
