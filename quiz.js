@@ -155,6 +155,8 @@ function showResults() {
     buildQuiz();
     updateScoreboard();
     resultsContainer.innerHTML = '';
+	// 다시하기 버튼을 누르면 제출 버튼을 숨깁니다.
+    submitButton.style.display = 'none';
   });
 
   resultsContainer.appendChild(retryButton);
