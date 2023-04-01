@@ -80,6 +80,19 @@ function buildQuiz() {
 
     const checkboxes = answerContainer.querySelectorAll(`input[type=checkbox]`);
   limitCheckboxSelection(checkboxes, currentQuestion.correctAnswers.length);
+
+  // 첫 번째 문제에서 정답 확인 버튼과 다음 버튼을 동시에 보여줍니다.
+  if (currentQuestionIndex === 0) {
+    checkAnswerButton.style.display = 'inline-block';
+    nextButton.style.display = 'inline-block';
+  } else if (currentQuestionIndex < numberOfQuestionsToAnswer - 1) {
+    nextButton.style.display = 'block';
+    checkAnswerButton.style.display = 'none';
+  } else {
+    submitButton.style.display = 'block';
+    nextButton.style.display = 'none';
+  }
+
 }
 
 function checkAnswer() {
@@ -143,23 +156,35 @@ function updateScoreboard() {
 }
 
 function showResults() {
-  resultsContainer.innerHTML = `총 점수: ${numCorrect} / ${numberOfQuestionsToAnswer}`;
+  // 문제와 보기를 숨깁니다.
+  questionContainer.style.display = 'none';
+  answerContainer.style.display = 'none';
+  nextButton.style.display = 'none';
+  submitButton.style.display = 'none';
 
-  const retryButton = document.createElement('button');
-  retryButton.textContent = '다시하기';
-  retryButton.classList.add('btn', 'btn-primary', 'mt-3');
+  // 결과를 화면 가운데 표시합니다.
+  resultsContainer.classList.add('d-flex', 'align-items-center', 'justify-content-center', 'vh-100');
+  resultsContainer.innerHTML = `
+    <div>
+      <h3 class="text-center">총 점수: ${numCorrect} / ${numberOfQuestionsToAnswer}</h3>
+      <button class="retry btn btn-primary mt-3 d-block mx-auto">다시하기</button>
+    </div>
+  `;
+
+  const retryButton = resultsContainer.querySelector('.retry');
   retryButton.addEventListener('click', () => {
+    // 다시하기 버튼을 누르면 문제와 보기를 다시 표시합니다.
+    questionContainer.style.display = '';
+    answerContainer.style.display = '';
+    resultsContainer.classList.remove('d-flex', 'align-items-center', 'justify-content-center', 'vh-100');
+
     currentQuestionIndex = 0;
     numCorrect = 0;
     randomQuestions = getRandomQuestions();
     buildQuiz();
     updateScoreboard();
     resultsContainer.innerHTML = '';
-	// 다시하기 버튼을 누르면 제출 버튼을 숨깁니다.
-    submitButton.style.display = 'none';
   });
-
-  resultsContainer.appendChild(retryButton);
 }
 
 function limitCheckboxSelection(checkboxes, maxSelection) {
