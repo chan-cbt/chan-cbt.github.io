@@ -86,6 +86,9 @@ if (currentQuestionIndex !== 0) {
     nextButton.style.display = 'block';
     submitButton.style.display = 'none';
   }
+
+  const checkboxes = answerContainer.querySelectorAll(`input[type=checkbox]`);
+  limitCheckboxSelection(checkboxes, currentQuestion.correctAnswers.length);
 }
 
 function checkAnswer() {
@@ -104,26 +107,27 @@ function checkAnswer() {
   const currentQuestion = randomQuestions[currentQuestionIndex];
 
   // 정답 및 오답 표시를 해당 보기에만 적용합니다.
- checkboxes.forEach(checkbox => {
-  const label = checkbox.parentElement;
-  if (userAnswers.includes(checkbox.value)) {
-    if (currentQuestion.correctAnswers.includes(checkbox.value)) {
-      label.style.color = "green";
-    } else {
-      label.style.color = "red";
-    }
-  } else if (currentQuestion.correctAnswers.includes(checkbox.value)) {
-    label.style.color = "green";
-  }
+checkboxes.forEach(checkbox => {
+const label = checkbox.parentElement;
+if (userAnswers.includes(checkbox.value)) {
+if (currentQuestion.correctAnswers.includes(checkbox.value)) {
+label.style.color = "green";
+} else {
+label.style.color = "red";
+}
+} else if (currentQuestion.correctAnswers.includes(checkbox.value)) {
+label.style.color = "green";
+}
 
-      // 체크박스를 비활성화합니다.
+    // 체크박스를 비활성화합니다.
     checkbox.disabled = true;
+
 });
 
 const correct = userAnswers.sort().toString() === currentQuestion.correctAnswers.sort().toString();
 
 if (correct) {
-  numCorrect++;
+numCorrect++;
 }
 updateScoreboard();
 
@@ -134,16 +138,16 @@ checkAnswerButton.style.display = 'none';
 
 // 마지막 문제인 경우 정답 확인 버튼을 숨기고 제출 버튼을 표시합니다.
 if (currentQuestionIndex === numberOfQuestionsToAnswer - 1) {
-  submitButton.style.display = 'block';
-  nextButton.style.display = 'none';
+submitButton.style.display = 'block';
+nextButton.style.display = 'none';
 } else {
-  nextButton.style.display = 'block';
-  submitButton.style.display = 'none';
+nextButton.style.display = 'block';
+submitButton.style.display = 'none';
 }
 }
 
 function showResults() {
-  resultsContainer.innerHTML = `총 점수: ${numCorrect} / ${numberOfQuestionsToAnswer}`;
+resultsContainer.innerHTML = 총 점수: ${numCorrect} / ${numberOfQuestionsToAnswer};
 }
 
 function showNextQuestion() {
@@ -152,12 +156,23 @@ buildQuiz();
 }
 
 function updateScoreboard() {
-scoreboard.innerHTML = `맞은 문제 수: ${numCorrect} / ${numberOfQuestionsToAnswer}`;
+scoreboard.innerHTML = 맞은 문제 수: ${numCorrect} / ${numberOfQuestionsToAnswer};
+}
+
+function limitCheckboxSelection(checkboxes, maxSelection) {
+checkboxes.forEach(checkbox => {
+checkbox.addEventListener('change', () => {
+const checkedCheckboxes = Array.from(checkboxes).filter(checkbox => checkbox.checked);
+if (checkedCheckboxes.length > maxSelection) {
+checkbox.checked = false;
+}
+});
+});
 }
 
 nextButton.addEventListener('click', () => {
-  checkAnswer();
-  showNextQuestion();
+checkAnswer();
+showNextQuestion();
 });
 submitButton.addEventListener('click', showResults);
 
