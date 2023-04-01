@@ -149,7 +149,10 @@ function updateScoreboard() {
 scoreboard.innerHTML = `맞은 문제 수: ${numCorrect} / ${numberOfQuestionsToAnswer}`;
 }
 
-nextButton.addEventListener('click', showNextQuestion);
+nextButton.addEventListener('click', () => {
+  checkAnswer();
+  showNextQuestion();
+});
 submitButton.addEventListener('click', showResults);
 
 init();
