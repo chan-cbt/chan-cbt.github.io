@@ -81,7 +81,7 @@ function buildQuiz() {
 function checkAnswer() {
   const answerContainer = document.getElementById('answer-container');
   const checkboxes = answerContainer.querySelectorAll(`input[type=checkbox]`);
-  const checkAnswerButton = quizContainer.querySelector('.check-answer');
+  const checkAnswerButton = document.querySelector('.check-answer');
   checkAnswerButton.style.display = 'none';
 
   let userAnswers = [];
