@@ -1,0 +1,31 @@
+{
+  "questions": [
+    {
+      "question": "웹 프로그래밍 언어는?",
+      "answers": {
+        "a": "Python",
+        "b": "JavaScript",
+        "c": "Ruby"
+      },
+      "correctAnswers": ["b", "c"]
+    },
+    {
+      "question": "웹 2프로그래밍 언어는?",
+      "answers": {
+        "a": "Pytho2n",
+        "b": "JavaS2cript",
+        "c": "Rub2y"
+      },
+      "correctAnswers": ["b", "c"]
+    },
+    {
+      "question": "웹 프로3그래밍 언어는?",
+      "answers": {
+        "a": "Pytho3n",
+        "b": "Ja3vaScript",
+        "c": "R3uby"
+      },
+      "correctAnswers": ["b", "c"]
+    }
+  ]
+}
