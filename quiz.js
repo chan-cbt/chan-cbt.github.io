@@ -69,9 +69,11 @@ function buildQuiz() {
   answerContainer.appendChild(checkAnswerButton);
 
   // 이전 질문에서 생성된 요소를 제거합니다.
+ if (currentQuestionIndex !== 0) {
   const questionIndex = currentQuestionIndex === 0 ? currentQuestionIndex : currentQuestionIndex - 1;
   const prevQuestionContainer = document.getElementsByName(`question${questionIndex}`)[0].parentNode.parentNode;
   prevQuestionContainer.parentNode.removeChild(prevQuestionContainer);
+}
 
   // 다음 버튼을 숨기거나 보여줍니다.
   if (currentQuestionIndex === numberOfQuestionsToAnswer - 1) {
@@ -120,7 +122,6 @@ if (correct) {
 updateScoreboard();
 
 // 정답 확인 버튼 대신 다음 버튼을 보여줍니다.
-checkAnswerButton = document.querySelector('.check-answer');
 const nextButton = document.getElementById('next');
 nextButton.style.display = 'block';
 checkAnswerButton.style.display = 'none';
