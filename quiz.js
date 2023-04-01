@@ -69,9 +69,9 @@ function buildQuiz() {
   answerContainer.appendChild(checkAnswerButton);
 
   // 이전 질문에서 생성된 요소를 제거합니다.
- if (currentQuestionIndex !== 0) {
+if (currentQuestionIndex !== 0) {
   const questionIndex = currentQuestionIndex === 0 ? currentQuestionIndex : currentQuestionIndex - 1;
-  const prevQuestionContainer = document.getElementsByName(`question${questionIndex}`)[0].parentNode.parentNode;
+  const prevQuestionContainer = document.querySelector(`input[name=question${questionIndex}]`).parentNode.parentNode.parentNode;
   prevQuestionContainer.parentNode.removeChild(prevQuestionContainer);
 }
 
