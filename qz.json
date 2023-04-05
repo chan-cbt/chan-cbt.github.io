@@ -440,7 +440,7 @@
 "A" : "Use the filter-record-transformer Fluentd filter plugin to remove the fields from the log entries in flight.",
 "B" : "Use the fluent-plugin-record-reformer Fluentd output plugin to remove the fields from the log entries in flight.",
 "C" : "Wait for the application developers to patch the application, and then verify that the log entries are no longer exposing PII.",
-"D" : "Stage log entries to Cloud Storage, and then trigger a Cloud Function to remove the fields and write the entries to Stackdriver via the Stackdriver Logging API.",
+"D" : "Stage log entries to Cloud Storage, and then trigger a Cloud Function to remove the fields and write the entries to Stackdriver via the Stackdriver Logging API."
     },
     "correctAnswers": ["B"]
   },
