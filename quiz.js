@@ -3,8 +3,8 @@ const resultsContainer = document.getElementById('results');
 const nextButton = document.getElementById('next');
 const submitButton = document.getElementById('submit');
 const scoreboard = document.getElementById('scoreboard');
-const totalQuestions = 177;
-const numberOfQuestionsToAnswer = 75;
+const totalQuestions = 83;
+const numberOfQuestionsToAnswer = 83;
 let currentQuestionIndex = 0;
 let numCorrect = 0;
 
