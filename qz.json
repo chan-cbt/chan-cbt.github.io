@@ -887,7 +887,7 @@
 "A" : "* Deploy the Stackdriver logging agent to the application servers.\n* Give the developers the IAM Logs Viewer role to access Stackdriver and view logs.",
 "B" : "* Deploy the Stackdriver logging agent to the application servers.\n* Give the developers the IAM Logs Private Logs Viewer role to access Stackdriver and view logs. ",
 "C" : "* Deploy the Stackdriver monitoring agent to the application servers.\n* Give the developers the IAM Monitoring Viewer role to access Stackdriver and view metrics.",
-(D).* Install the gsutil command line tool on your application servers.\n* Write a script using gsutil to upload your application log to a Cloud Storage bucket, and then schedule it to run via cron every 5 minutes."
+"D" : "* Install the gsutil command line tool on your application servers.\n* Write a script using gsutil to upload your application log to a Cloud Storage bucket, and then schedule it to run via cron every 5 minutes."
     },
     "correctAnswers": ["A"]
   },
