@@ -847,7 +847,8 @@
 
   {
 "question": "Your company follows Site Reliability Engineering principles. You are writing a postmortem for an incident, triggered by a software change, that severely affected users. You want to prevent severe incidents from happening in the future. What should you do?",
-
+ 
+    "answers": {
 "A" : "Identify engineers responsible for the incident and escalate to their senior management.",
 "B" : "Ensure that test cases that catch errors of this type are run successfully before new software releases.",
 "C" : "Follow up with the employees who reviewed the changes and prescribe practices they should follow in the future.",
