@@ -43,9 +43,7 @@ function buildQuiz() {
   const currentQuestion = randomQuestions[currentQuestionIndex];
 
   const questionContainer = document.getElementById('question-container');
-  questionContainer.innerHTML = `
-    <div class="question">${currentQuestionIndex + 1}. ${currentQuestion.question}</div>
-  `;
+    questionContainer.innerHTML = `<div class="question">${currentQuestionIndex + 1}. ${currentQuestion.question.replace(/\n/g, '<br>')}</div>`;
 
   const answerContainer = document.getElementById('answer-container');
   answerContainer.innerHTML = "";
@@ -65,7 +63,7 @@ function buildQuiz() {
     answerInput.value = letter;
 
     answerLabel.appendChild(answerInput);
-    answerLabel.innerHTML += ` ${letter} : ${currentQuestion.answers[letter]}`;
+    answerLabel.innerHTML += ` ${letter} : ${currentQuestion.answers[letter].replace(/\n/g, '<br>')}`;
 
     answerCardBody.appendChild(answerLabel);
     answerCard.appendChild(answerCardBody);
