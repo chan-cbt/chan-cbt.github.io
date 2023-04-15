@@ -24,7 +24,7 @@ function getRandomQuestions() {
 
 async function init() {
   questions = await fetchQuizData();
-  randomQuestions = randomQuestions();
+  randomQuestions = getRandomQuestions();
   buildQuiz();
   updateScoreboard();
 }
