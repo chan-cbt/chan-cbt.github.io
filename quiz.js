@@ -3,8 +3,8 @@ const resultsContainer = document.getElementById('results');
 const nextButton = document.getElementById('next');
 const submitButton = document.getElementById('submit');
 const scoreboard = document.getElementById('scoreboard');
-const totalQuestions = 4;
-const numberOfQuestionsToAnswer = 4;
+const totalQuestions = 83;
+const numberOfQuestionsToAnswer = 83;
 let currentQuestionIndex = 0;
 let numCorrect = 0;
 
@@ -24,7 +24,7 @@ function getRandomQuestions() {
 
 async function init() {
   questions = await fetchQuizData();
-  randomQuestions = getRandomQuestions();
+  randomQuestions = Questions;
   buildQuiz();
   updateScoreboard();
 }
