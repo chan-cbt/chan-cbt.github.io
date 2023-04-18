@@ -188,7 +188,6 @@ function limitCheckboxSelection(checkboxes, maxSelection) {
 }
 
 nextButton.addEventListener('click', () => {
-  checkAnswer();
   showNextQuestion();
 });
 submitButton.addEventListener('click', showResults);
