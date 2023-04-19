@@ -192,4 +192,24 @@ nextButton.addEventListener('click', () => {
 });
 submitButton.addEventListener('click', showResults);
 
+// 이동 버튼을 가져옵니다.
+const gotoButton = document.getElementById('gotoButton');
+
+// 문제 번호를 기반으로 이동하는 함수를 작성합니다.
+function gotoQuestion() {
+  const gotoQuestionInput = document.getElementById('gotoQuestion');
+  const questionNumber = parseInt(gotoQuestionInput.value);
+
+  if (isNaN(questionNumber) || questionNumber < 1 || questionNumber > numberOfQuestionsToAnswer) {
+    alert(`문제 번호를 1과 ${numberOfQuestionsToAnswer} 사이의 값으로 입력해주세요.`);
+    return;
+  }
+
+  currentQuestionIndex = questionNumber - 1;
+  buildQuiz();
+}
+
+// 이동 버튼에 대한 이벤트 리스너를 작성합니다.
+gotoButton.addEventListener('click', gotoQuestion);
+
 init();
