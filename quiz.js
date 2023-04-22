@@ -36,7 +36,7 @@ function shuffleAnswers(answers) {
 
 async function init() {
   questions = await fetchQuizData();
-  randomQuestions = questions;
+  randomQuestions = getRandomQuestions();
   buildQuiz();
   updateScoreboard();
 }
@@ -62,7 +62,7 @@ function buildQuiz() {
     <div class="question">${currentQuestionIndex + 1}. ${currentQuestion.question}</div>
   `;
 
-  const answerContainer = document.getElementById('answer-container');
+    const answerContainer = document.getElementById('answer-container');
   answerContainer.innerHTML = "";
 
   for (const letter in shuffledAnswers) {
@@ -80,7 +80,8 @@ function buildQuiz() {
     answerInput.value = letter;
 
     answerLabel.appendChild(answerInput);
-    answerLabel.innerHTML += ` ${letter} : ${shuffledAnswers[letter]}`;
+    // ABCD를 제거한 보기
+    answerLabel.innerHTML += ` ${shuffledAnswers[letter]}`;
 
     answerCardBody.appendChild(answerLabel);
     answerCard.appendChild(answerCardBody);
