@@ -21,6 +21,11 @@ function getRandomQuestions() {
   const shuffledQuestions = [...questions].sort(() => Math.random() - 0.5);
   return shuffledQuestions.slice(0, numberOfQuestionsToAnswer);
 }
+function shuffleAnswers(answers) {
+  const answerEntries = Object.entries(answers);
+  const shuffledEntries = answerEntries.sort(() => Math.random() - 0.5);
+  return Object.fromEntries(shuffledEntries);
+}
 
 async function init() {
   questions = await fetchQuizData();
@@ -41,7 +46,7 @@ function buildQuiz() {
   }
 
   const currentQuestion = randomQuestions[currentQuestionIndex];
-
+ const shuffledAnswers = shuffleAnswers(currentQuestion.answers);
   const questionContainer = document.getElementById('question-container');
     questionContainer.innerHTML = `<div class="question">${currentQuestionIndex + 1}. ${currentQuestion.question.replace(/\n/g, '<br>')}</div>`;
 
