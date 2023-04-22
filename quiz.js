@@ -54,10 +54,8 @@ function buildQuiz() {
 
   const currentQuestion = randomQuestions[currentQuestionIndex];
 
-  const questionContainer = document.getElementById('question-container');
-    questionContainer.innerHTML = `<div class="question">${currentQuestionIndex + 1}. ${currentQuestion.question.replace(/\n/g, '<br>')}</div>`;
-
-const shuffledAnswers = shuffleAnswers(currentQuestion.answers);
+  // 보기를 섞습니다.
+  const shuffledAnswers = shuffleAnswers(currentQuestion.answers);
 
   const questionContainer = document.getElementById('question-container');
   questionContainer.innerHTML = `
@@ -95,10 +93,11 @@ const shuffledAnswers = shuffleAnswers(currentQuestion.answers);
   checkAnswerButton.onclick = checkAnswer;
   answerContainer.appendChild(checkAnswerButton);
 
-    const checkboxes = answerContainer.querySelectorAll(`input[type=checkbox]`);
+  const checkboxes = answerContainer.querySelectorAll(`input[type=checkbox]`);
   limitCheckboxSelection(checkboxes, currentQuestion.correctAnswers.length);
-
 }
+
+
 
 function checkAnswer() {
   const answerContainer = document.getElementById('answer-container');
