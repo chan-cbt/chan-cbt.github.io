@@ -46,9 +46,11 @@ function buildQuiz() {
   }
 
   const currentQuestion = randomQuestions[currentQuestionIndex];
- const shuffledAnswers = shuffleAnswers(currentQuestion.answers);
+
   const questionContainer = document.getElementById('question-container');
     questionContainer.innerHTML = `<div class="question">${currentQuestionIndex + 1}. ${currentQuestion.question.replace(/\n/g, '<br>')}</div>`;
+
+const shuffledAnswers = shuffleAnswers(currentQuestion.answers);
 
   const answerContainer = document.getElementById('answer-container');
   answerContainer.innerHTML = "";
