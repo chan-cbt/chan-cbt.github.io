@@ -21,10 +21,17 @@ function getRandomQuestions() {
   const shuffledQuestions = [...questions].sort(() => Math.random() - 0.5);
   return shuffledQuestions.slice(0, numberOfQuestionsToAnswer);
 }
+
 function shuffleAnswers(answers) {
   const answerEntries = Object.entries(answers);
   const shuffledEntries = answerEntries.sort(() => Math.random() - 0.5);
-  return Object.fromEntries(shuffledEntries);
+
+  let shuffledAnswers = {};
+  shuffledEntries.forEach(([key, value]) => {
+    shuffledAnswers[key] = value;
+  });
+
+  return shuffledAnswers;
 }
 
 async function init() {
@@ -50,14 +57,6 @@ function buildQuiz() {
   const questionContainer = document.getElementById('question-container');
     questionContainer.innerHTML = `<div class="question">${currentQuestionIndex + 1}. ${currentQuestion.question.replace(/\n/g, '<br>')}</div>`;
 
-const shuffledAnswers = shuffleAnswers(currentQuestion.answers);
-
-  const answerContainer = document.getElementById('answer-container');
-  answerContainer.innerHTML = "";
-
-  for (const letter in currentQuestion.answers) {
-    const answerCard = document.createElement("div");
-    answerCard.className = "card mb-2";
 
     const answerCardBody = document.createElement("div");
     answerCardBody.className = "card-body";
@@ -70,7 +69,7 @@ const shuffledAnswers = shuffleAnswers(currentQuestion.answers);
     answerInput.value = letter;
 
     answerLabel.appendChild(answerInput);
-    answerLabel.innerHTML += ` ${letter} : ${currentQuestion.answers[letter].replace(/\n/g, '<br>')}`;
+    answerLabel.innerHTML += ` ${letter} : ${shuffledAnswers[letter]}`;
 
     answerCardBody.appendChild(answerLabel);
     answerCard.appendChild(answerCardBody);
