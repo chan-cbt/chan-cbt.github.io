@@ -57,6 +57,19 @@ function buildQuiz() {
   const questionContainer = document.getElementById('question-container');
     questionContainer.innerHTML = `<div class="question">${currentQuestionIndex + 1}. ${currentQuestion.question.replace(/\n/g, '<br>')}</div>`;
 
+const shuffledAnswers = shuffleAnswers(currentQuestion.answers);
+
+  const questionContainer = document.getElementById('question-container');
+  questionContainer.innerHTML = `
+    <div class="question">${currentQuestionIndex + 1}. ${currentQuestion.question}</div>
+  `;
+
+  const answerContainer = document.getElementById('answer-container');
+  answerContainer.innerHTML = "";
+
+  for (const letter in shuffledAnswers) {
+    const answerCard = document.createElement("div");
+    answerCard.className = "card mb-2";
 
     const answerCardBody = document.createElement("div");
     answerCardBody.className = "card-body";
