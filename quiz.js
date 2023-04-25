@@ -22,21 +22,9 @@ function getRandomQuestions() {
   return shuffledQuestions.slice(0, numberOfQuestionsToAnswer);
 }
 
-function shuffleAnswers(answers) {
-  const answerEntries = Object.entries(answers);
-  const shuffledEntries = answerEntries.sort(() => Math.random() - 0.5);
-
-  let shuffledAnswers = {};
-  shuffledEntries.forEach(([key, value]) => {
-    shuffledAnswers[key] = value;
-  });
-
-  return shuffledAnswers;
-}
-
 async function init() {
   questions = await fetchQuizData();
-  randomQuestions = getRandomQuestions();
+  randomQuestions = questions;
   buildQuiz();
   updateScoreboard();
 }
@@ -54,18 +42,13 @@ function buildQuiz() {
 
   const currentQuestion = randomQuestions[currentQuestionIndex];
 
-  // 보기를 섞습니다.
-  const shuffledAnswers = shuffleAnswers(currentQuestion.answers);
-
   const questionContainer = document.getElementById('question-container');
-  questionContainer.innerHTML = `
-    <div class="question">${currentQuestionIndex + 1}. ${currentQuestion.question}</div>
-  `;
+    questionContainer.innerHTML = `<div class="question">${currentQuestionIndex + 1}. ${currentQuestion.question.replace(/\n/g, '<br>')}</div>`;
 
-    const answerContainer = document.getElementById('answer-container');
+  const answerContainer = document.getElementById('answer-container');
   answerContainer.innerHTML = "";
 
-  for (const letter in shuffledAnswers) {
+  for (const letter in currentQuestion.answers) {
     const answerCard = document.createElement("div");
     answerCard.className = "card mb-2";
 
@@ -80,8 +63,7 @@ function buildQuiz() {
     answerInput.value = letter;
 
     answerLabel.appendChild(answerInput);
-    // ABCD를 제거한 보기
-    answerLabel.innerHTML += ` ${shuffledAnswers[letter]}`;
+    answerLabel.innerHTML += ` ${letter} : ${currentQuestion.answers[letter].replace(/\n/g, '<br>')}`;
 
     answerCardBody.appendChild(answerLabel);
     answerCard.appendChild(answerCardBody);
@@ -94,11 +76,10 @@ function buildQuiz() {
   checkAnswerButton.onclick = checkAnswer;
   answerContainer.appendChild(checkAnswerButton);
 
-  const checkboxes = answerContainer.querySelectorAll(`input[type=checkbox]`);
+    const checkboxes = answerContainer.querySelectorAll(`input[type=checkbox]`);
   limitCheckboxSelection(checkboxes, currentQuestion.correctAnswers.length);
+
 }
-
-
 
 function checkAnswer() {
   const answerContainer = document.getElementById('answer-container');
